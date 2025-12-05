@@ -22,6 +22,23 @@ model User {
   lastName  String   @db.VarChar(255)
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
+  pets      Pet[]
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @updatedAt @db.Timestamp(6)
+}
+
+model Pet {
+  id        String   @id @default(uuid()) @db.Char(36)
+  name      String   @db.VarChar(255)
+  specie    String   @db.VarChar(100)
+  notes    String?  @db.Text
+  age      Int    @db.Int
+  weight   Float  @db.Float
+  ownerId   String   @db.Char(36)
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @db.Timestamp(6)
+
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId], name: "idx_ownerId")
 }

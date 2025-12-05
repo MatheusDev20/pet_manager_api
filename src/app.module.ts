@@ -5,6 +5,7 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { UserModule } from './modules/users/users.module';
 import { CqrsModule } from '@nestjs/cqrs';
 import { AuthModule } from './modules/auth/auth.module';
+import { PetsModule } from './modules/pets/pets.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { AuthModule } from './modules/auth/auth.module';
     PrismaModule,
     CqrsModule,
     UserModule,
+    PetsModule,
     AuthModule,
   ],
   providers: [AppService],

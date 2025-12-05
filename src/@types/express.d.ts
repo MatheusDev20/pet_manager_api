@@ -6,6 +6,6 @@ type AuthenticatedUser = {
 
 declare module 'express-serve-static-core' {
   interface Request {
-    user?: AuthenticatedUser;
+    user: AuthenticatedUser;
   }
 }

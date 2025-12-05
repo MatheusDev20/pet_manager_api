@@ -45,7 +45,6 @@ export class LoginGuard implements CanActivate {
   }
 
   areCookiesExpired = (cookies: any) => {
-    console.log('Cookies:', cookies);
     return Object.keys(cookies).length === 0;
   };
 }

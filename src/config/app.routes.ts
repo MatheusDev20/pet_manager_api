@@ -4,6 +4,7 @@
  */
 
 const usersRoot = 'users';
+const petsRoot = 'pets';
 const v1 = '/api/v1';
 
 export const routesV1 = {
@@ -11,6 +12,9 @@ export const routesV1 = {
   user: {
     root: usersRoot,
     delete: `/${usersRoot}/:id`,
+  },
+  pet: {
+    root: petsRoot,
   },
   auth: {
     login: '/auth/login',
