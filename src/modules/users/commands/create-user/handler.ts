@@ -2,24 +2,29 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { CreateUserCommand } from './command';
 import { UserRepository } from '../../repository/user-repository';
-// import { HttpException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
+import { EncryptService } from 'src/modules/auth/hashing';
 
 @CommandHandler(CreateUserCommand)
 export class CreateUserService implements ICommandHandler<CreateUserCommand> {
-  constructor(private repository: UserRepository) {}
+  constructor(
+    private repository: UserRepository,
+    private readonly encrypt: EncryptService,
+  ) {}
 
   async execute(command: CreateUserCommand): Promise<{ id: string }> {
     const { metadata, id, ...userData } = command;
 
-    // const { email } = userData;
-    // // const existingUser = await this.userRepository.findByEmail(email);
+    const { email } = userData;
+    const user = await this.repository.findByEmail(email);
 
-    // if (existingUser)
-    //   throw new HttpException('User with this email already exists', 400);
+    if (user) throw new BadRequestException('Email Already Taken');
+    const encryptedPassword = await this.encrypt.hash(userData.password);
 
-    // const user = new User({ ...userData, addresses });;
-
-    const { id: newId } = await this.repository.create(userData);
+    const { id: newId } = await this.repository.create({
+      ...userData,
+      password: encryptedPassword,
+    });
 
     return { id: newId };
   }

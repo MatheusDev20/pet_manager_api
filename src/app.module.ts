@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { UserModule } from './modules/users/users.module';
 import { CqrsModule } from '@nestjs/cqrs';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { CqrsModule } from '@nestjs/cqrs';
     PrismaModule,
     CqrsModule,
     UserModule,
+    AuthModule,
   ],
   providers: [AppService],
 })

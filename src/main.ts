@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './shared/exception-filter';
 import { ValidationPipe } from '@nestjs/common';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -11,7 +12,7 @@ async function bootstrap() {
     origin: 'http://localhost:3000',
     credentials: true,
   };
-
+  app.use(cookieParser());
   if (process.env.NODE_ENV === 'production') {
     app.enableCors();
   } else app.enableCors(localOrigin);
