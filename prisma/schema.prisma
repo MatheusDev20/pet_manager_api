@@ -47,7 +47,7 @@ model Appointment {
   id        String   @id @default(uuid()) @db.Char(36)
   petId     String   @db.Char(36)
   date      DateTime @db.Timestamp(6)
-  reason    String   @db.VarChar(255)
+  service    String   @db.VarChar(40)
   notes     String  @db.Text
   createdAt DateTime @default(now()) @db.Timestamp(6)
   updatedAt DateTime @updatedAt @db.Timestamp(6)
@@ -55,4 +55,16 @@ model Appointment {
   pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
 
   @@index([petId], name: "idx_petId")
+}
+
+model Log {
+  id        String   @id @default(uuid()) @db.Char(36)
+  userId    String?  @db.Char(36)
+  method    String   @db.VarChar(10)
+  route     String   @db.VarChar(255)
+  status    Int
+  timestamp DateTime @default(now()) @db.Timestamp(6)
+  params    Json?
+  query     Json?
+  body      Json?
 }

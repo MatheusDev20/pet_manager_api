@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CommandHandler } from '@nestjs/cqrs';
 import { CreateAppointmentCommand } from '../create/command';
-import { BadRequestException } from '@nestjs/common';
+import { BadRequestException, ForbiddenException } from '@nestjs/common';
 import { isBeforeToday } from 'src/shared/date';
 import { PetsRepository } from 'src/modules/pets/repository/pets.repository';
 import { AppointmentsRepository } from 'src/modules/pets/repository/appointment.repository';
@@ -14,13 +14,15 @@ export class CreateAppointmentService {
   ) {}
 
   async execute(command: CreateAppointmentCommand): Promise<{ date: string }> {
-    const { date, metadata, id, petId, ...rest } = command;
+    const { date, metadata, id, petId, userId, ...rest } = command;
 
     if (isBeforeToday(date))
       throw new BadRequestException('Invalid Appointment Date');
 
     const pet = await this.petRepository.findById(petId);
     if (!pet) throw new BadRequestException('Resource not found');
+
+    if (pet.ownerId !== userId) throw new ForbiddenException();
 
     const { date: appointmentDate } = await this.repository.create(
       { ...rest, date: new Date(date) },

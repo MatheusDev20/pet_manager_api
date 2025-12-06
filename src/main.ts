@@ -3,7 +3,10 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './shared/exception-filter';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { PrismaService } from './modules/prisma/prisma.service';
+
 import cookieParser from 'cookie-parser';
+import { LogInterceptor } from './shared/interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -25,6 +28,8 @@ async function bootstrap() {
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, documentFactory);
+
+  app.useGlobalInterceptors(new LogInterceptor(app.get(PrismaService)));
 
   app.use(cookieParser());
   if (process.env.NODE_ENV === 'production') {

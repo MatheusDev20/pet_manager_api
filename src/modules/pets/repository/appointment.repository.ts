@@ -34,4 +34,9 @@ export class AppointmentsRepository {
   async findById(id: string): Promise<Appointment | null> {
     return this.prisma.appointment.findUnique({ where: { id } });
   }
+
+  async delete(id: string): Promise<{ id: string }> {
+    const result = await this.prisma.appointment.delete({ where: { id } });
+    return { id: result.id };
+  }
 }

@@ -1,5 +1,5 @@
 import { QueryHandler } from '@nestjs/cqrs';
-import { PetsRepository } from '../../repository/pets.repository';
+import { PetsRepository } from '../../../repository/pets.repository';
 import { ReadMyPetsQuery } from './query';
 import { Pet } from 'src/generated/prisma/client';
 
