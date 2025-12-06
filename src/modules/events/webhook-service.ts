@@ -4,7 +4,7 @@ import axios from 'axios';
 @Injectable()
 export class WebhookService {
   private readonly logger = new Logger(WebhookService.name);
-  private readonly webhookUrl = process.env.WEBHOOK_URL;
+  webhookUrl = process.env.WEBHOOK_URL;
 
   async fireWebhook<T>(payload: T) {
     if (!this.webhookUrl) {
