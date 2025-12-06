@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CommandHandler } from '@nestjs/cqrs';
 import { UserRepository } from 'src/modules/users/repository/user-repository';
-import { PetsRepository } from '../../repository/pets.repository';
+import { PetsRepository } from '../../../repository/pets.repository';
 import { UpdatedPetCommand } from './command';
 import { NotFoundException } from '@nestjs/common';
 

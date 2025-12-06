@@ -2,7 +2,7 @@
 import { CommandHandler } from '@nestjs/cqrs';
 import { CreatePetCommand } from './command';
 import { UserRepository } from 'src/modules/users/repository/user-repository';
-import { PetsRepository } from '../../repository/pets.repository';
+import { PetsRepository } from '../../../repository/pets.repository';
 
 @CommandHandler(CreatePetCommand)
 export class CreatePetService {

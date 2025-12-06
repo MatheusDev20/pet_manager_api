@@ -13,7 +13,7 @@ import { LoginGuard } from 'src/modules/auth/guards/login';
 import type { Request } from 'express';
 import { CommandBus } from '@nestjs/cqrs';
 import { UpdatedPetCommand } from './command';
-import { UpdatePetDTO } from '../../dto/update-pet.dto';
+import { UpdatePetDTO } from '../../../dto/update-pet.dto';
 
 @Controller(routesV1.version)
 export class UpdatePetController {

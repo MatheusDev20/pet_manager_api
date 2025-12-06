@@ -1,8 +1,3 @@
-/**
- * Application routes with its version
- * https://github.com/Sairyss/backend-best-practices#api-versioning
- */
-
 const usersRoot = 'users';
 const petsRoot = 'pets';
 const v1 = '/api/v1';
@@ -15,6 +10,9 @@ export const routesV1 = {
   },
   pet: {
     root: petsRoot,
+  },
+  appointments: {
+    root: 'appointments',
   },
   auth: {
     login: '/auth/login',

@@ -39,6 +39,20 @@ model Pet {
   updatedAt DateTime @updatedAt @db.Timestamp(6)
 
   owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
-
+  appointments Appointment[]
   @@index([ownerId], name: "idx_ownerId")
+}
+
+model Appointment {
+  id        String   @id @default(uuid()) @db.Char(36)
+  petId     String   @db.Char(36)
+  date      DateTime @db.Timestamp(6)
+  reason    String   @db.VarChar(255)
+  notes     String  @db.Text
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @db.Timestamp(6)
+
+  pet Pet @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  @@index([petId], name: "idx_petId")
 }

@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { routesV1 } from 'src/config/app.routes';
-import { CreatePetDTO } from '../../dto/create-pet.dto';
+import { CreatePetDTO } from '../../../dto/create-pet.dto';
 import { created, HttpResponse } from 'src/shared/http-response-helpers';
 import { CreatePetCommand } from './command';
 import { LoginGuard } from 'src/modules/auth/guards/login';
