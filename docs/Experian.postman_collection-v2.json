@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "44cf5915-f418-41e0-a422-8d0ebf58e722",
+		"name": "Experian",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10192553"
+	},
+	"item": [
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "Create Pet Appointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service\": \"vaccine\",\n    \"notes\": \"Is completely vaccinated\",\n    \"date\": \"2025-12-19T22:40:45.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets/{{petId}}/appointments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets",
+								"{{petId}}",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Apointment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"notes\": \"Teste Edição - Apointment - Webhook\",\n    \"date\": \"2026-12-19T22:40:45.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets/appointments/{{appointmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets",
+								"appointments",
+								"{{appointmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Appointment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets/appointments/{{appointmentId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets",
+								"appointments",
+								"{{appointmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Appointments with filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets/{{petId}}/appointments?serviceFilter=vaccine&dateFilter=2025-12-19T22:40:45.000Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets",
+								"{{petId}}",
+								"appointments"
+							],
+							"query": [
+								{
+									"key": "serviceFilter",
+									"value": "vaccine"
+								},
+								{
+									"key": "dateFilter",
+									"value": "2025-12-19T22:40:45.000Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Criação usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Matheus\",\n    \"lastName\": \"de Paula\",\n    \"email\": \"matheusdev201@gmail.com\",\n    \"password\": \"Mue23214@441E\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"matheusdev20@gmail.com\",\n    \"password\": \"superSenha@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pets",
+			"item": [
+				{
+					"name": "Read Pets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bolt\",\n    \"specie\": \"Dog\",\n    \"weight\": 24,\n    \"age\": 4,\n    \"notes\": \"Small cute and sweet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/pets/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"pets",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,6 @@
 # Pets Manager API
 
-To easily get access to the endpoints, download and import this Postman [Collection](http://localhost:3000)
+To easily get access to the endpoints, import this Postman [Collection](/docs/Experian.postman_collection-v2.json)
 
 You can also access the swagger docs after running the project locally
 

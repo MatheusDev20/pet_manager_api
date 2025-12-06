@@ -5,7 +5,7 @@ echo " Starting Local Development Environment"
 
 echo "Starting MySQL container..."
 docker compose up -d db
-sleep 10
+sleep 15
 
 echo ""
 echo "Installing Node dependencies..."
